@@ -114,6 +114,16 @@
     "groupTitle": "用户接口"
   },
   {
+    "type": "get",
+    "url": "/api/auth/refresh",
+    "title": "03.刷新token",
+    "name": "refresh",
+    "group": "01Auth",
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/Api/V1/AuthController.php",
+    "groupTitle": "用户接口"
+  },
+  {
     "type": "post",
     "url": "/api/auth/register",
     "title": "01.注册",
@@ -197,7 +207,7 @@
     "groupTitle": "用户接口"
   },
   {
-    "type": "post",
+    "type": "get",
     "url": "/api/auth/user",
     "title": "03.获取用户信息",
     "name": "user",
@@ -218,7 +228,7 @@
   {
     "type": "post",
     "url": "/api/global",
-    "title": "全局返回码",
+    "title": "1.全局返回码",
     "description": "<p>全局返回码</p>",
     "group": "01Return",
     "permission": [
@@ -358,24 +368,24 @@
     "name": "PostHeader"
   },
   {
-    "type": "post",
+    "type": "get",
     "url": "/api/addresses",
     "title": "01.获取用户地址列表",
-    "name": "UserAddresses",
+    "name": "addresses",
     "group": "01UserAddresses",
     "parameter": {
       "fields": {
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "Number",
             "optional": false,
             "field": "pSize",
             "description": "<p>M   单页显示记录条数（默认10）</p>"
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "Number",
             "optional": false,
             "field": "page",
             "description": "<p>M   页码</p>"
@@ -387,7 +397,138 @@
       "examples": [
         {
           "title": "成功返回",
-          "content": "HTTP/1.1 200\n{\n \"code\": 0,\n \"message\": \"\",\n \"list\": [\n     {\n         \"id\": 1,\n         \"user_id\": 1,\n         \"province\": 11,\n         \"city\": 11,\n         \"district\": 11,\n         \"address\": \"11\",\n         \"zip\": 11,\n         \"contact_name\": \"1\",\n         \"contact_phone\": \"1\",\n         \"created_at\": \"2018-07-16 09-18\",\n         \"updated_at\": \"2018-07-16 09-18\"\n     },\n     {\n         \"id\": 4,\n         \"user_id\": 1,\n         \"province\": 2,\n         \"city\": 2,\n         \"district\": 2,\n         \"address\": \"2\",\n         \"zip\": 2,\n         \"contact_name\": \"2\",\n         \"contact_phone\": \"2\",\n         \"created_at\": \"2018-07-16 09-18\",\n         \"updated_at\": \"2018-07-16 09-18\"\n     }\n ],\n \"total\": 2,\n \"totalPage\": 1\n }",
+          "content": "HTTP/1.1 200\n{\n \"code\": 0,\n \"message\": \"\",\n \"list\": [\n     {\n         \"id\": 1,\n         \"user_id\": 1,\n         \"province\": 11,\n         \"city\": 11,\n         \"district\": 11,\n         \"address\": \"11\",\n         \"zip\": 11,\n         \"contact_name\": \"1\",\n         \"contact_phone\": \"1\",\n         \"created_at\": \"2018-07-16 09-18\",\n         \"updated_at\": \"2018-07-16 09-18\"\n     },\n     {\n         \"id\": 4,\n         \"user_id\": 1,\n         \"province\": 2,\n         \"city\": 2,\n         \"district\": 2,\n         \"address\": \"2\",\n         \"zip\": 2,\n         \"contact_name\": \"2\",\n         \"contact_phone\": \"2\",\n         \"created_at\": \"2018-07-16 09-18\",\n         \"updated_at\": \"2018-07-16 09-18\"\n     }\n ],\n \"total\": 2,\n \"totalPage\": 1\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/Api/V1/UserAddressesController.php",
+    "groupTitle": "用户地址接口"
+  },
+  {
+    "type": "post",
+    "url": "/api/addresses",
+    "title": "03.删除用户地址",
+    "name": "destroy",
+    "group": "01UserAddresses",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>C   地址ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功返回",
+          "content": "HTTP/1.1 200\n{\n \"code\": 0,\n \"message\": \"\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "错误返回",
+          "content": "HTTP/1.1 200\n{\n \"code\": 1,\n \"message\": \"错误信息\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/Api/V1/UserAddressesController.php",
+    "groupTitle": "用户地址接口"
+  },
+  {
+    "type": "post",
+    "url": "/api/addresses",
+    "title": "02.用户地址添加&修改",
+    "name": "store",
+    "group": "01UserAddresses",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>C   地址ID（0 =&gt; 新增）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "province",
+            "description": "<p>M   省份</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "city",
+            "description": "<p>M   城市</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "district",
+            "description": "<p>M   区域</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "address",
+            "description": "<p>M   详细地址</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "zip",
+            "description": "<p>M   邮编</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "contact_name",
+            "description": "<p>M   收货人姓名</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "contact_phone",
+            "description": "<p>M   收货人手机号</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "成功返回",
+          "content": "HTTP/1.1 200\n{\n \"code\": 0,\n \"message\": \"\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "错误返回",
+          "content": "HTTP/1.1 200\n{\n \"code\": 1,\n \"message\": \"错误信息\"\n}",
           "type": "json"
         }
       ]
