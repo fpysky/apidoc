@@ -9,7 +9,7 @@ define({ "api": [
       "examples": [
         {
           "title": "成功返回",
-          "content": "HTTP/1.1 200\n{\n     \"success\": 1,\n     \"gt\": \"9af3aa9e204402036ff03ca65b64621a\",\n     \"challenge\": \"30d33f3d3cd369458f7831928945f843\",\n     \"new_captcha\": 1,\n     \"status\": 1\n  }",
+          "content": "HTTP/1.1 200\n{\n     \"success\": 1,\n     \"gt\": \"9af3aa9e204402036ff03ca65b64621a\",\n     \"challenge\": \"30d33f3d3cd369458f7831928945f843\",\n     \"new_captcha\": 1,\n     \"status\": 1\n }",
           "type": "json"
         }
       ]
@@ -76,7 +76,7 @@ define({ "api": [
       "examples": [
         {
           "title": "成功返回",
-          "content": "HTTP/1.1 200\n{\n  \"message\": \"\",\n  \"code\":0\n}",
+          "content": "HTTP/1.1 200\n{\n  \"message\": \"\",\n  \"status_code\":0\n}",
           "type": "json"
         }
       ]
@@ -85,7 +85,7 @@ define({ "api": [
       "examples": [
         {
           "title": "错误返回",
-          "content": "HTTP/1.1 422\n{\n     \"message\": \"验证不通过\",\n     \"errors\": {\n         \"name\": [\"用户名不能为空\"],\n         \"email\": [\"邮箱不能为空\"],\n         \"password\": [\"密码不能为空\"],\n         \"geetest_challenge\": [\"请点击以滑动校验验证码\"],\n         \"geetest_validate\": [\"请点击以滑动校验验证码\"],\n         \"geetest_seccode\": [\"请点击以滑动校验验证码\"],\n         \"geetest_status\": [\"请点击以滑动校验验证码\"]\n     },\n     \"status_code\": 422\n }\nHTTP/1.1 400\n{\n     \"message\": \"验证不通过\",\n     \"errors\": {\n         \"errors\": [\"邮箱或密码不正确\"],\n     },\n     \"status_code\": 400\n }",
+          "content": "HTTP/1.1 422\n{\n     \"message\": \"验证不通过\",\n     \"errors\": {\n         \"name\": [\"用户名不能为空\"],\n         \"email\": [\"邮箱不能为空\"],\n         \"password\": [\"密码不能为空\"],\n         \"geetest_challenge\": [\"请点击以滑动校验验证码\"],\n         \"geetest_validate\": [\"请点击以滑动校验验证码\"],\n         \"geetest_seccode\": [\"请点击以滑动校验验证码\"],\n         \"geetest_status\": [\"请点击以滑动校验验证码\"]\n     },\n     \"status_code\": 422\n }\n HTTP/1.1 422（极验验证不通过）\n{\n     \"message\": \"验证不通过\",\n     \"errors\": {\n         \"error\": [\"验证失败请重试\"],\n     },\n     \"status_code\": 422\n }\nHTTP/1.1 400\n{\n     \"message\": \"验证不通过\",\n     \"errors\": {\n         \"error\": [\"邮箱或密码不正确\"],\n     },\n     \"status_code\": 400\n }",
           "type": "json"
         }
       ]
@@ -104,7 +104,7 @@ define({ "api": [
       "examples": [
         {
           "title": "成功返回",
-          "content": "HTTP/1.1 200\n{\n  \"message\":\"退出成功\",\n  \"code\":0\n}",
+          "content": "HTTP/1.1 200\n{\n  \"message\":\"退出成功\",\n  \"status_code\":0\n}",
           "type": "json"
         }
       ]
@@ -188,7 +188,7 @@ define({ "api": [
       "examples": [
         {
           "title": "成功返回",
-          "content": "HTTP/1.1 200\n{\n  \"message\": \"\",\n  \"code\":0,\n}",
+          "content": "HTTP/1.1 200\n{\n  \"message\": \"\",\n  \"status_code\":0,\n}",
           "type": "json"
         }
       ]
@@ -216,7 +216,7 @@ define({ "api": [
       "examples": [
         {
           "title": "成功返回",
-          "content": "HTTP/1.1 200\n{\n  \"data\":{\n     \"id\":1,\n     \"name\":\"a\",\n     \"email\":\"a@a.com\",\n     \"created_at\":\"2018-07-10 02:27:51\",\n     \"updated_at\":\"2018-07-10 02:27:51\"\n  },\n  \"code\":0\n}",
+          "content": "HTTP/1.1 200\n{\n  \"data\":{\n     \"id\":1,\n     \"name\":\"a\",\n     \"email\":\"a@a.com\",\n     \"created_at\":\"2018-07-10 02:27:51\",\n     \"updated_at\":\"2018-07-10 02:27:51\"\n  },\n  \"status_code\":0\n}",
           "type": "json"
         }
       ]
@@ -243,13 +243,6 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "-4001",
-            "description": "<p>登录异常,需要重新登录 statusCode 401 其他200</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
             "field": "-1",
             "description": "<p>系统错误</p>"
           },
@@ -264,71 +257,22 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "1",
+            "field": "500",
             "description": "<p>请求错误</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "1001",
-            "description": "<p>缺少头</p>"
+            "field": "422",
+            "description": "<p>请求参数错误</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "1002",
-            "description": "<p>access_key 错误</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "1003",
-            "description": "<p>签名错误</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "1004",
-            "description": "<p>签名失效</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "1005",
-            "description": "<p>签名重复</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "20001",
-            "description": "<p>需要验证手机绑定本系统账号</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "20002",
-            "description": "<p>设置切换身份成功 未完善资料</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "20003",
-            "description": "<p>设置切换身份成功 未审核或已冻结账号</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "20004",
-            "description": "<p>请求成功,返回相应支付方式的数据</p>"
+            "field": "400",
+            "description": "<p>登陆错误</p>"
           }
         ]
       }
@@ -397,7 +341,7 @@ define({ "api": [
       "examples": [
         {
           "title": "成功返回",
-          "content": "HTTP/1.1 200\n{\n \"code\": 0,\n \"message\": \"\",\n \"list\": [\n     {\n         \"id\": 1,\n         \"user_id\": 1,\n         \"province\": 11,\n         \"city\": 11,\n         \"district\": 11,\n         \"address\": \"11\",\n         \"zip\": 11,\n         \"contact_name\": \"1\",\n         \"contact_phone\": \"1\",\n         \"created_at\": \"2018-07-16 09-18\",\n         \"updated_at\": \"2018-07-16 09-18\"\n     },\n     {\n         \"id\": 4,\n         \"user_id\": 1,\n         \"province\": 2,\n         \"city\": 2,\n         \"district\": 2,\n         \"address\": \"2\",\n         \"zip\": 2,\n         \"contact_name\": \"2\",\n         \"contact_phone\": \"2\",\n         \"created_at\": \"2018-07-16 09-18\",\n         \"updated_at\": \"2018-07-16 09-18\"\n     }\n ],\n \"total\": 2,\n \"totalPage\": 1\n}",
+          "content": "HTTP/1.1 200\n{\n \"status_code\": 0,\n \"list\": [\n     {\n         \"id\": 1,\n         \"user_id\": 1,\n         \"province\": 11,\n         \"city\": 11,\n         \"district\": 11,\n         \"address\": \"11\",\n         \"zip\": 11,\n         \"contact_name\": \"1\",\n         \"contact_phone\": \"1\",\n         \"created_at\": \"2018-07-16 09-18\",\n         \"updated_at\": \"2018-07-16 09-18\"\n     },\n     {\n         \"id\": 4,\n         \"user_id\": 1,\n         \"province\": 2,\n         \"city\": 2,\n         \"district\": 2,\n         \"address\": \"2\",\n         \"zip\": 2,\n         \"contact_name\": \"2\",\n         \"contact_phone\": \"2\",\n         \"created_at\": \"2018-07-16 09-18\",\n         \"updated_at\": \"2018-07-16 09-18\"\n     }\n ],\n \"total\": 2,\n \"totalPage\": 1\n}",
           "type": "json"
         }
       ]
@@ -429,7 +373,7 @@ define({ "api": [
       "examples": [
         {
           "title": "成功返回",
-          "content": "HTTP/1.1 200\n{\n \"code\": 0,\n \"message\": \"\"\n}",
+          "content": "HTTP/1.1 200\n{\n \"status_code\": 0,\n \"message\": \"操作成功\"\n}",
           "type": "json"
         }
       ]
@@ -438,7 +382,7 @@ define({ "api": [
       "examples": [
         {
           "title": "错误返回",
-          "content": "HTTP/1.1 200\n{\n \"code\": 1,\n \"message\": \"错误信息\"\n}",
+          "content": "HTTP/1.1 200\n{\n \"status_code\": 500,\n \"message\": \"错误信息\"\n}",
           "type": "json"
         }
       ]
@@ -519,7 +463,7 @@ define({ "api": [
       "examples": [
         {
           "title": "成功返回",
-          "content": "HTTP/1.1 200\n{\n \"code\": 0,\n \"message\": \"\"\n}",
+          "content": "HTTP/1.1 200\n{\n \"status_code\": 0,\n \"message\": \"\"\n}",
           "type": "json"
         }
       ]
@@ -528,7 +472,7 @@ define({ "api": [
       "examples": [
         {
           "title": "错误返回",
-          "content": "HTTP/1.1 200\n{\n \"code\": 1,\n \"message\": \"错误信息\"\n}",
+          "content": "HTTP/1.1 422\n{\n     \"message\": \"验证不通过\",\n     \"errors\": {\n         \"province\": [\"省份不能为空\"],\n         \"city\": [\"城市不能为空\"],\n     },\n     \"status_code\": 422\n }\nHTTP/1.1 500\n{\n \"status_code\": 1,\n \"message\": \"错误信息\"\n}",
           "type": "json"
         }
       ]
