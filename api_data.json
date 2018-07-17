@@ -217,6 +217,148 @@
   },
   {
     "type": "post",
+    "url": "/api/global",
+    "title": "全局返回码",
+    "description": "<p>全局返回码</p>",
+    "group": "01Return",
+    "permission": [
+      {
+        "name": "none"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "-4001",
+            "description": "<p>登录异常,需要重新登录 statusCode 401 其他200</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "-1",
+            "description": "<p>系统错误</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "0",
+            "description": "<p>请求成功</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "1",
+            "description": "<p>请求错误</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "1001",
+            "description": "<p>缺少头</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "1002",
+            "description": "<p>access_key 错误</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "1003",
+            "description": "<p>签名错误</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "1004",
+            "description": "<p>签名失效</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "1005",
+            "description": "<p>签名重复</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "20001",
+            "description": "<p>需要验证手机绑定本系统账号</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "20002",
+            "description": "<p>设置切换身份成功 未完善资料</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "20003",
+            "description": "<p>设置切换身份成功 未审核或已冻结账号</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "20004",
+            "description": "<p>请求成功,返回相应支付方式的数据</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.1.0",
+    "filename": "app/Http/Controllers/Api/ReturnCodeController.php",
+    "groupTitle": "全局返回码",
+    "name": "PostApiGlobal"
+  },
+  {
+    "type": "post",
+    "url": "Header返回值",
+    "title": "",
+    "description": "<p>Header返回值</p>",
+    "group": "01Return",
+    "permission": [
+      {
+        "name": "none"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>Bearer {token} 登录后返回的token 当token过期后也会返回新的token 需要替换本地token</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.1.0",
+    "filename": "app/Http/Controllers/Api/ReturnCodeController.php",
+    "groupTitle": "全局返回码",
+    "name": "PostHeader"
+  },
+  {
+    "type": "post",
     "url": "/api/addresses",
     "title": "01.获取用户地址列表",
     "name": "UserAddresses",
