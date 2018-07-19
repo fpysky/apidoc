@@ -226,6 +226,25 @@ define({ "api": [
     "groupTitle": "用户接口"
   },
   {
+    "type": "get",
+    "url": "/api/productClassify",
+    "title": "01.获取商品分类",
+    "name": "productClassify",
+    "group": "01ProductClassify",
+    "success": {
+      "examples": [
+        {
+          "title": "成功返回",
+          "content": "  HTTP/1.1 200\n  {\n       \"code\": 0,\n       \"list\": [\n            {\n                \"id\": 1,\n                \"name\": \"手机\",\n                \"pid\": 0,\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"_child\": [\n                    {\n                        \"id\": 2,\n                        \"pid\": 1,\n                        \"name\": \"魅族手机\",\n                        \"created_at\": null,\n                        \"updated_at\": null\n                    },\n                    {\n                        \"id\": 3,\n                        \"pid\": 1,\n                        \"name\": \"魅蓝手机\",\n                        \"created_at\": null,\n                        \"updated_at\": null\n                    }\n                  ]\n               },\n               ...\n           ]\n\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/Api/V1/ProductClassifyController.php",
+    "groupTitle": "商品分类"
+  },
+  {
     "type": "post",
     "url": "/api/global",
     "title": "1.全局返回码",
